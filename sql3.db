@@ -1,0 +1,20 @@
+create procedure tem3
+           @P nvarchar(60)
+as
+SELECT  orders.date
+FROM customers INNER JOIN orders
+on customers.ID=orders.customers_id
+INNER JOIN product
+on orders.Product_id=product.id
+INNER JOIN citis
+on customers.City_id=citis.id
+WHERE citis.name=@P
+
+
+return @P
+
+
+
+declare @dc int;
+exec @dc= tem3'mashhad';
+print @dc;
